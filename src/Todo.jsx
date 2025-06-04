@@ -7,12 +7,14 @@ function Todo(){
     const [task, setTask] = useState("");
     
     const handleAddTask = () =>{
+      console.log(todoList)
      if(task == "") {
+
         alert("Task should not be empty")
      }else{
         setTodoList((prev) => [...prev, task]);
         setTask("");
-
+console.log(todoList)
      }  
     } 
 

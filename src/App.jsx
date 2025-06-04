@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { createContext, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -8,14 +8,65 @@ import { Toolbar } from '@mui/material'
 import Footer from './components/Footer.jsx'
 import Foodlist from './components/Foodlist.jsx'
 
+
+export const APPContext = createContext(null);
+
+
+const data = [
+        {
+            restorant_name:"Pizza Hut",
+            food_image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/RX_THUMBNAIL/IMAGES/VENDOR/2025/4/21/f6d8a22a-fd9d-48f5-89fd-44e29bb1b6b1_770772.jpg",
+             rating:4.6,
+            expected_delivery: "40-50 mins",
+            food_name:"pizza",
+            location:"Central Bengalore"
+        },
+        {
+            restorant_name:"Adil Hotel",
+            food_image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/gp1ityra6utvzqn6ghnv",
+             rating:4.2,
+            expected_delivery: "35-40mins",
+            food_name:"Biryani",
+            location:"Chhindwara Locality"
+        },
+        {
+            restorant_name:"The Fusion Lounge",
+            food_image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/fa4944f0cfdcbca2bec1f3ab8e3db3f7",
+             rating:4.1,
+            expected_delivery: "50-55 mins",
+            food_name:"south Indian",
+            location:"Railway Station"
+        },
+        {
+            restorant_name:"Gupta Bhojnalay",
+            food_image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/jo9pdipf4elcuch8g55q",
+             rating:4.3,
+            expected_delivery: "40-45mins",
+            food_name:"Fast food",
+            location:"Chhindwara Locality"
+        },
+        {
+            restorant_name:"Chaska Cafe",
+            food_image:"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/uxgpy3bwmc5rsojmtw43",
+             rating:4.1,
+            expected_delivery: "50-55 mins",
+            food_name:"Cafe",
+            location:"Chhindwara Locality"
+        }
+    ]
+
 function App() {
+  const [FoodDatas,setFoodDatas] =useState(data);
   
 
   return (
     <>
+    {/* <Todo/> */}
+    <APPContext.Provider value={{FoodDatas, setFoodDatas}} >
       <Navbar />
-      <Foodlist></Foodlist>
+      <Foodlist/>
       <Footer />
+      </APPContext.Provider>
     </>
   )
 }
