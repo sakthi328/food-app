@@ -20,7 +20,6 @@ export default function UpdateFood(){
             setFoodDatas(prev=>([...prev.filter((item)=>item.id != id), formdata]));
         navigate('/');
         }
-
         
 
     return <div className="my-4 max-w-[600px] mx-auto">
