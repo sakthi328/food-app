@@ -5,6 +5,7 @@ import Navbar from './components/Navbar.jsx'
 import Footer from './components/Footer.jsx'
 import Foodlist from './components/Foodlist.jsx'
 import {AddFood} from './components/AddFood.jsx'
+import UpdateFood from './components/UpdateFood.jsx'
 
 
 export const APPContext = createContext(null);
@@ -18,7 +19,7 @@ const data = [
              rating:4.6,
             expected_delivery: "40-50 mins",
             food_name:"pizza",
-            location:"Central Bengalore"
+            location:"Chennai"
         },
         {
           id:2,
@@ -70,6 +71,7 @@ function App() {
       <Routes>
             <Route index element={<Foodlist />} />
             <Route path="create" element={<AddFood />} />
+            <Route path="edit/:id" element={<UpdateFood />} />
           </Routes>
       </div>
       <Footer />

@@ -13,7 +13,7 @@ const Footer = () =>{
     return <div className="font-mono py-6 bg-zinc-100 left-0 w-full bottom-0">
             <div className="my-2 container mx-auto">
                 <div className="grid  grid-cols-12 my-4">
-                    <div className="col-span-4"><img style={{width:"100px"}} src="https://www.swiggy.com/corporate/wp-content/uploads/2024/10/swiggy-logo.webp" alt="Beast Food" /></div>
+                    <div className="col-span-4"><img style={{width:"100px"}} src="/src/assets/logo.png" alt="Beast Food" /></div>
                     <div className="col-span-2 px-4">
                         <h5 className="px-3 text-lg font-bold">Company</h5>
                         <List>

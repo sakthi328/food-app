@@ -1,38 +1,30 @@
+import React from "react";
 import { Button, TextField } from "@mui/material";
-import React, { useContext, useState } from "react";
+import { useState,useContext } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { APPContext } from "../App";
-import { useNavigate } from "react-router-dom";
 
-export function AddFood(){
+export default function UpdateFood(){
     const {FoodDatas,setFoodDatas}=useContext(APPContext);
     const navigate = useNavigate()
-    const [formdata, setFormData] = useState({
-            id: FoodDatas.length+1,
-            restorant_name:"",
-            food_image:"",
-            rating:0,
-            expected_delivery: "",
-            food_name:"",
-            location:""
-        })
-
-        console.log(formdata)
-    
+    const {id} = useParams();
+    const food = FoodDatas.find(iteam=>iteam.id==id)
+    const [formdata, setFormData] = useState(food)
         const handleOnChage  = (event)=>{
             console.log(event);
             const key = event.target.name
             setFormData(prev=>({...prev,[key]:event.target.value}))
             
-            
         }
-
         const handleSubmit = ()=>{
-            setFoodDatas(prev=>([...prev,formdata]))
-            navigate('/');
+            setFoodDatas(prev=>([...prev.filter((item)=>item.id != id), formdata]));
+        navigate('/');
         }
 
-    return<div className="my-4 max-w-[600px] mx-auto">
-        <h1 className="text-2xl mb-8 font bold text-center">Add Your Restorant Food</h1>
+        
+
+    return <div className="my-4 max-w-[600px] mx-auto">
+        <h1 className="text-2xl font-bold mb-8 text-center">Edit Your Restorant Food</h1>
         <form className="grid gap-4">
             <TextField fullWidth onChange={(event)=>setFormData(prev=>({...prev,restorant_name: event.target.value}))} value={formdata.restorant_name} className="!mb-2" id="restorant_name" name="restorant_name" label="Restorant Name" />
             <TextField fullWidth onChange={handleOnChage} value={formdata.food_image} className="!mb-2" type="url" id="food_image" name="food_image" label="Food Image URL" />
