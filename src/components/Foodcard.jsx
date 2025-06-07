@@ -5,13 +5,28 @@ import { useContext } from "react";
 import { APPContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
-export default function FoodCard  ({item}){
+export default function FoodCard  ({item,fetchFood}){
 
 const {setFoodDatas} = useContext(APPContext);
 const navigate = useNavigate();
     const handleDelete = () => {
-            setFoodDatas(prev =>prev.filter((data)=>data.id !=item.id))
+            try {
+      // true , false
+      if (confirm(`Are you sure to delete ${item.food_name}`) == true) {
+        fetch(`https://684235efe1347494c31c255d.mockapi.io/foods/${item.id}`, {
+          method: "DELETE",
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+            fetchFood();
+          })
+          .catch((error) => console.log(error));
+      }
+    } catch (error) {
+      console.log(error);
     }
+ };
 
     return <Card className=" hover:cursor-pointer hover:shadow-lg !rounded-lg">
                         <CardContent>
@@ -19,7 +34,7 @@ const navigate = useNavigate();
                            <CardMedia component="img" className="h-56 rounded-md object-fit-cover object-center" src={item.food_image} alt={item.food_name} />
                            
                             <div className="py-2">
-                                <h4 className="text-xl font-bold">{item.restorant_name}</h4>
+                                <h4 className="text-xl font-bold">{item.restaurant_name}</h4>
                                 <div className="flex gap-1 py-1">
                                     <StarsIcon className="text-green-700"/>
                                     <p className="font-semibold">{item.rating} </p>

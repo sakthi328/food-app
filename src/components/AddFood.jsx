@@ -1,14 +1,12 @@
 import { Button, TextField } from "@mui/material";
-import React, { useContext, useState } from "react";
-import { APPContext } from "../App";
+import React, {  useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 export function AddFood(){
-    const {FoodDatas,setFoodDatas}=useContext(APPContext);
+    
     const navigate = useNavigate()
     const [formdata, setFormData] = useState({
-            id: FoodDatas.length+1,
-            restorant_name:"",
+            restaurant_name: "",
             food_image:"",
             rating:0,
             expected_delivery: "",
@@ -26,15 +24,23 @@ export function AddFood(){
             
         }
 
+        const createFood = () =>{
+            try {
+                const payload = JSON.stringify(formdata)
+                fetch("https://684235efe1347494c31c255d.mockapi.io/foods",{method:"POST", headers:{'content-type':'application/json'},body:payload}).then((response)=>response.json()).then((data)=>{console.log(data); navigate('/');}).catch(error=>console.log(error))
+            } catch (error) {
+                console.log(error)
+            }
+        }
+
         const handleSubmit = ()=>{
-            setFoodDatas(prev=>([...prev,formdata]))
-            navigate('/');
+            createFood();
         }
 
     return<div className="my-4 max-w-[600px] mx-auto">
-        <h1 className="text-2xl mb-8 font bold text-center">Add Your Restorant Food</h1>
+        <h1 className="text-2xl mb-8 font bold text-center">Add Your Restaurant Food</h1>
         <form className="grid gap-4">
-            <TextField fullWidth onChange={(event)=>setFormData(prev=>({...prev,restorant_name: event.target.value}))} value={formdata.restorant_name} className="!mb-2" id="restorant_name" name="restorant_name" label="Restorant Name" />
+            <TextField fullWidth onChange={(event)=>setFormData((prev)=>({...prev,restaurant_name: event.target.value}))} value={formdata.restaurant_name} className="!mb-2" id="restaurant_name" name="restaurant_name" label="Restaurant Name" />
             <TextField fullWidth onChange={handleOnChage} value={formdata.food_image} className="!mb-2" type="url" id="food_image" name="food_image" label="Food Image URL" />
             <TextField fullWidth onChange={handleOnChage} value={formdata.rating} className="!mb-2" type="number" id="rating" name="rating" label="Rating" />
             <TextField fullWidth onChange={handleOnChage} value={formdata.food_name} className="!mb-2" id="food_name" name="food_name" label="Food Name" />
