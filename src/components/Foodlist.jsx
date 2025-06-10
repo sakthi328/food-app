@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import FoodCard from "./FoodCard";
+import FoodCard from "./Foodcard";
 
 
 export default function Foodlist(){
