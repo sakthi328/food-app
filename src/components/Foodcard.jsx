@@ -1,7 +1,6 @@
 import { Button, Card, CardContent, CardMedia, Fab } from "@mui/material";
 import StarsIcon from "@mui/icons-material/Stars";
-import ClearIcon from '@mui/icons-material/Clear';
-import { useContext } from "react";
+import { useContext} from "react";
 import { APPContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +10,7 @@ const {setFoodDatas} = useContext(APPContext);
 const navigate = useNavigate();
     const handleDelete = () => {
             try {
-      // true , false
+    
       if (confirm(`Are you sure to delete ${item.food_name}`) == true) {
         fetch(`https://684235efe1347494c31c255d.mockapi.io/foods/${item.id}`, {
           method: "DELETE",

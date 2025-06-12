@@ -10,9 +10,6 @@ import UpdateFood from './components/UpdateFood.jsx'
 
 export const APPContext = createContext(null);
 
-
-
-
 function App() {
   const [FoodDatas,setFoodDatas] =useState([]);
   
