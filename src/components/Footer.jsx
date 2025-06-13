@@ -10,7 +10,7 @@ import XIcon from '@mui/icons-material/X';
 
 const Footer = () =>{
     const listItemClass = "!text-gray-500 hover:!text-gray-700"
-    return <div className="font-mono py-6 bg-zinc-100 left-0 w-full bottom-0">
+    return <div className="font-mono py-6  left-0 w-full bottom-0">
             <div className="my-2 container mx-auto">
                 <div className="grid  grid-cols-12 my-4">
                     <div className="col-span-4"><img style={{width:"100px"}} src="/src/assets/logo.png" alt="Beast Food" /></div>
