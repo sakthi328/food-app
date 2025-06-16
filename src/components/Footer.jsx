@@ -5,6 +5,7 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import XIcon from '@mui/icons-material/X';
+import logo from "../assets/logo.png"
 
 
 
@@ -13,7 +14,7 @@ const Footer = () =>{
     return <div className="font-mono py-6  left-0 w-full bottom-0">
             <div className="my-2 container mx-auto">
                 <div className="grid  grid-cols-12 my-4">
-                    <div className="col-span-4"><img style={{width:"100px"}} src="/src/assets/logo.png" alt="Beast Food" /></div>
+                    <div className="col-span-4"><img style={{width:"100px"}} src={logo} alt="Beast Food" /></div>
                     <div className="col-span-2 px-4">
                         <h5 className="px-3 text-lg font-bold">Company</h5>
                         <List>

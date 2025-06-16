@@ -1,6 +1,7 @@
 import { AppBar, Button, FormControlLabel, Link, List, ListItem, ListItemText, Toolbar,styled, Switch, } from "@mui/material";
 import { useNavigate } from 'react-router-dom';
-import React, { useCallback, useContext } from "react";
+import React, { useCallback, useContext } from "react"; 
+import logo from "../assets/logo.png"
 import { APPContext } from "../App";
 const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   width: 62,
@@ -68,7 +69,7 @@ const  Navbar = ()=>{
        <div className="container mx-auto">
            <Toolbar>
               <div style={{display:"flex", width:"100%", alignItems:"center", justifyContent:"space-between"}}>
-                  <div><img onClick={()=>navigate('/')} className="hover:cursor-pointer"  style={{width:"100px"}} src="/src/assets/logo.png" alt="Beast Food" /></div>
+                  <div><img onClick={()=>navigate('/')} className="hover:cursor-pointer"  style={{width:"100px"}} src={logo} alt="Beast Food" /></div>
                   <List sx={{display:"flex", flexWrap:'nowrap', gap:1, }}>
                     <ListItem component={Link}>
                         <ListItemText sx={itemColor} className="overflow-visible whitespace-nowrap  overflow-ellipsis  hover:!text-red-700 "   primary={"About Beast Food"} />

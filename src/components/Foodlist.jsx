@@ -42,7 +42,7 @@ export default function Foodlist() {
   }, [search, FoodDatas])
 
 
-  return <div className="container mt-24 mb-12 mx-auto">
+  return <div className="container mt-8 mb-12 mx-auto">
 
 
 
