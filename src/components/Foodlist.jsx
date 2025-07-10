@@ -12,7 +12,7 @@ export default function Foodlist() {
 
   const fetchFood = () => {
     try {
-      fetch("https://684235efe1347494c31c255d.mockapi.io/foods", {
+      fetch(`${process.env.API_URL}/foods`, {
         method: "GET",
       })
         .then((response) => response.json())
@@ -35,7 +35,7 @@ export default function Foodlist() {
 
   const filterdFoods = useMemo(() => {
     if (search != "") {
-      return FoodDatas.filter(food => food.food_name.toLowerCase().includes(search.toLowerCase()));
+      return FoodDatas.filter(food => food.name.toLowerCase().includes(search.toLowerCase()));
     } else {
       return FoodDatas
     }

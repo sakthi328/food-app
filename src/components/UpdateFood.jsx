@@ -19,7 +19,7 @@ export default function UpdateFood(){
         // }
         const fetchFood = () => {
     try {
-      fetch(`https://684235efe1347494c31c255d.mockapi.io/foods/${id}`, {
+      fetch(`${process.env.API_URL}/foods/${id}`, {
         method: "GET",
       })
         .then((response) => response.json())
@@ -58,7 +58,7 @@ const FromComponent  = ({initialValues}) =>{
   const updateFood = (values) => {
     try {
       const paylod = JSON.stringify(values);
-      fetch(`https://684235efe1347494c31c255d.mockapi.io/foods/${id}`, {
+      fetch(`${process.env.API_URL}/foods/${id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: paylod,
@@ -110,17 +110,17 @@ const FromComponent  = ({initialValues}) =>{
             fullWidth
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.food_image}
-            error={errors.food_image &&touched.food_image}
+            value={values.image}
+            error={errors.image &&touched.image}
             helperText={
-             errors.food_image &&
-             touched.food_image &&
-             errors.food_image
+             errors.image &&
+             touched.image &&
+             errors.image
             }
             className="!mb-2"
             type="url"
-            id="food_image"
-            name="food_image"
+            id="image"
+            name="image"
             label="Food Image URL"
           />
           <TextField
@@ -144,16 +144,33 @@ const FromComponent  = ({initialValues}) =>{
             fullWidth
             onBlur={handleBlur}
             onChange={handleChange}
-            value={values.food_name}
-            error={errors.food_name &&touched.food_name}
+            value={values.price}
+            error={errors.price && touched.price}
             helperText={
-             errors.food_name &&
-             touched.food_name &&
-             errors.food_name
+             errors.price &&
+             touched.price &&
+             errors.price
             }
             className="!mb-2"
-            id="food_name"
-            name="food_name"
+            type="number"
+            id="price"
+            name="price"
+            label="Price"
+          />
+          <TextField
+            fullWidth
+            onBlur={handleBlur}
+            onChange={handleChange}
+            value={values.name}
+            error={errors.name &&touched.name}
+            helperText={
+             errors.name &&
+             touched.name &&
+             errors.name
+            }
+            className="!mb-2"
+            id="name"
+            name="name"
             label="Food Name"
           />
           <TextField
