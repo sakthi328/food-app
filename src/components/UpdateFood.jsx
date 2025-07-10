@@ -19,7 +19,7 @@ export default function UpdateFood(){
         // }
         const fetchFood = () => {
     try {
-      fetch(`${process.env.VITE_API_URL}/foods/${id}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/foods/${id}`, {
         method: "GET",
       })
         .then((response) => response.json())
@@ -58,7 +58,7 @@ const FromComponent  = ({initialValues}) =>{
   const updateFood = (values) => {
     try {
       const paylod = JSON.stringify(values);
-      fetch(`${process.env.VITE_API_URL}/foods/${id}`, {
+      fetch(`${import.meta.env.VITE_API_URL}/foods/${id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: paylod,

@@ -12,7 +12,7 @@ export default function Foodlist() {
 
   const fetchFood = () => {
     try {
-      fetch(`${process.env.VITE_API_URL}/foods`, {
+      fetch(`${import.meta.env.VITE_API_URL}/foods`, {
         method: "GET",
       })
         .then((response) => response.json())

@@ -12,7 +12,7 @@ const navigate = useNavigate();
             try {
     
       if (confirm(`Are you sure to delete ${item.restaurant_name}`) == true) {
-        fetch(`${process.env.API_URL}/foods/${item._id}`, {
+        fetch(`${import.meta.env.VITE_API_URL}/foods/${item._id}`, {
           method: "DELETE",
         })
           .then((response) => response.json())
