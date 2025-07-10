@@ -47,7 +47,7 @@ export function AddFood(){
         const createFood = (values) =>{
             try {
                 const payload = JSON.stringify(values)
-                fetch(`${process.env.API_URL}/foods/`,{method:"POST", headers:{'content-type':'application/json'},body:payload}).then((response)=>response.json()).then((data)=>{console.log(data); navigate('/');}).catch(error=>console.log(error))
+                fetch(`${process.env.VITE_API_URL}/foods/`,{method:"POST", headers:{'content-type':'application/json'},body:payload}).then((response)=>response.json()).then((data)=>{console.log(data); navigate('/');}).catch(error=>console.log(error))
             } catch (error) {
                 console.log(error)
             }
