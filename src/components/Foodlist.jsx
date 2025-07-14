@@ -10,14 +10,14 @@ export default function Foodlist() {
 
 
 
-  const fetchFood = () => {
+  const fetchFood = async () => {
     try {
-      fetch(`${import.meta.env.VITE_API_URL}/foods`, {
+     const response = await fetch(`${import.meta.env.VITE_API_URL}/foods`, {
         method: "GET",
       })
-        .then((response) => response.json())
-        .then((data) => setFoodDatas(data))
-        .catch((error) => console.log(error));
+         const data = await response.json();
+        console.log(data);
+      setFoodDatas(data);
     } catch (error) {
       console.log(error);
     }
